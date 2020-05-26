@@ -1,10 +1,11 @@
 <div align="center">
-  <img src="https://github.com/bw-med-cabinet/DS-4/blob/master/img/med_cabinet.png"><br>
+  <img src="https://github.com/bw-med-cabinet/DS-4/blob/dev-scaffolding/img/med_cabinet.png"><br>
 </div>
 
 # Med Cabinet
 
 >Med Cabinet is a simple machine learning model for new cannabis consumers trying to get off pharmaceuticals, who want to use cannabis as a means to battle medical conditions and ailments.
+
 >Help patients find the right strains! Use user data along with strain data along a machine learning model to guide user recommendations.
 
 [Product Vision Document](https://docs.google.com/document/d/17CFltRMijet83Ye8XgYAXo3bgdvJH_Z1zv5iqHWEDiI/edit#heading=h.egmppyfu0k8r)
@@ -16,16 +17,6 @@
     * [License](#license)
 
 ---
-
-## TEAM
-
-**Christan Arneson**: *UI*
-**Daniel Gipson**: *React-I*
-**Christan Corby**: *React-II*
-**James Carpino**: *Back-end*
-**Steven Chase** & **Luis Urena**: *DS-III*
-**Ping Ao** & **Michel Laporte**: *DS-IV*
-**Nathan Nguyen**: *PL*
 
 ## DATA
 
@@ -53,6 +44,16 @@ Local Deployment
 ```
 Local Test
 ```
+
+## TEAM
+
+* **Christan Arneson**:*UI
+* **Daniel Gipson**: React-I
+* **Christan Corby**: React-II
+* **James Carpino**: Back-end
+* **Steven Chase** & **Luis Urena**: DS-III
+* **Ping Ao** & **Michel Laporte**: DS-IV
+* **Nathan Nguyen**: PL
 
 ## LICENSE
 
