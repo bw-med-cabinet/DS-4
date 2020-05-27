@@ -47,7 +47,7 @@ Local Test
 
 ## TEAM
 
-* **Christan Arneson**:*UI
+* **Christan Arneson**: UI
 * **Daniel Gipson**: React-I
 * **Christan Corby**: React-II
 * **James Carpino**: Back-end

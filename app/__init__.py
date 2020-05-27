@@ -11,7 +11,7 @@ from flask import Flask
 # from flask_cors import CORS
 
 #> Import routes
-from app.models import db, migrate
+from app.models import Cannabis, db, migrate
 from app.routes.home_routes import home_routes
 from app.routes.model_routes import model_routes
 
@@ -23,11 +23,11 @@ def create_app():
     # CORS(app)
 
     # Configure the database
-    app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:////data/cannabis_model.sqlite3"
+    app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///data/database.sqlite3"
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
     db.init_app(app)
     migrate.init_app(app, db)
-
+    
     # Configure routes
     app.register_blueprint(home_routes)
     app.register_blueprint(model_routes)
