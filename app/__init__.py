@@ -8,7 +8,7 @@
 import os
 from dotenv import load_dotenv
 from flask import Flask
-# from flask_cors import CORS
+from flask_cors import CORS
 
 #> Import routes
 from app.models import db, migrate
@@ -21,7 +21,11 @@ load_dotenv()
 
 def create_app():
     app = Flask(__name__)
-    # CORS(app)
+    cors =  CORS(app, resources={
+        r"/*": {
+            "origins": "*"
+        }
+    })
 
     # Configure the database
     app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///data/database.sqlite3"
