@@ -16,7 +16,12 @@ def home():
     return jsonify(hello)
 
 
-@model_routes.route("/cannabis")
+@home_routes.route("/home")
+def home_layout():
+    return render_template("home.html")
+
+
+@home_routes.route("/cannabis")
 def cannabis():
     """database endpoint.
 

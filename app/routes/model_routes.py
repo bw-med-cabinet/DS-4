@@ -11,6 +11,7 @@ import pandas as pd
 
 from sklearn.neighbors import NearestNeighbors
 
+
 model_routes = Blueprint("model_routes", __name__)
 
 dtm = pickle.load(open('./app/data/knn01_dtm.pkl', 'rb'))
@@ -19,7 +20,13 @@ tf = pickle.load(open('./app/data/knn01_tf.pkl', 'rb'))
 nn = NearestNeighbors(n_neighbors=5, algorithm='ball_tree')
 nn.fit(dtm)
 
-@model_routes.route("/cannabis/model_output", methods=['POST'])
+
+@model_routes.route("/cannabis/model_form")
+def user_form():
+    return render_template("model_form.html")
+
+
+@model_routes.route("/cannabis/output", methods=['GET', 'POST'])
 def knn01_model_recommender():
     """creates list with top n recommended strains.
 
@@ -33,14 +40,26 @@ def knn01_model_recommender():
     Returns:
         list_model_id: python list of n recommended strains.
     """
+    user_dict = request.json
 
-    type_list = request.form.getlist("type_list")
-    effect_list = request.form.getlist("effect_list")
-    flavor_list = request.form.getlist("flavor_list")	
+    # type_list = request.form.getlist("type_list")
+    # effect_list = request.form.getlist("effect_list")
+    # flavor_list = request.form.getlist("flavor_list")	
     
-    # request_dict = {"effect": effect_dict, 
-    #                "flavor": flavor_list
-    #             } #> JSON dictionaries test
+    # request_dict = {"type": type_list,
+    #                 "effect": effect_list, 
+    #                 "flavor": flavor_list
+    #              } #> JSON dictionaries test
+
+    type_list, effect_list, flavor_list = (
+        user_dict.get("type_list"),
+        user_dict.get("effect_list"),
+        user_dict.get("flavor_list")
+    )
+
+    type_list = [type_list.lower() for type_list in type_list]
+    effect_list = [effect_list.lower() for effect_list in effect_list]
+    flavor_list = [flavor_list.lower() for flavor_list in flavor_list]
 
     request_text = [type_list,
                     effect_list, 
@@ -69,7 +88,7 @@ def knn01_model_recommender():
         for val in list_strains
     ]
 
-    records = parse_records(Cannabis.query.filter(Cannabis.model_id.in_(return_list)).all())
+    records = parse_records(Cannabis.query.filter(Cannabis.strain_index.in_(return_list)).all())
     
     # MILESTONE 02 #> User input list goes through KNN model
 
