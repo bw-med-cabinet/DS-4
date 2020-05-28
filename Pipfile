@@ -1,0 +1,25 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+autopep8 = "*"
+
+[packages]
+gunicorn = "*"
+psycopg2-binary = "*"
+scikit-learn = "*"
+python-dotenv = "*"
+requests = "*"
+flask = "*"
+flask-sqlalchemy = "*"
+flask-migrate = "*"
+pandas = "*"
+csv-to-sqlite = "*"
+scipy = "*"
+numpy = "*"
+flask-cors = "*"
+
+[requires]
+python_version = "3.7"
