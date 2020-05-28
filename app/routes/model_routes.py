@@ -13,43 +13,11 @@ from sklearn.neighbors import NearestNeighbors
 
 model_routes = Blueprint("model_routes", __name__)
 
-
-"""strain_type = [
-    'Indica', 'Sativa', 'Hybrid'
-]
-
-effect_profile = [
-    'Happy', 'Relaxed', 'Euphoric', 'Uplifted', 'Creative', 'Sleepy', 
-    'Energetic', 'Focused', 'Hungry', 'Talkative', 'Tingly', 'Giggly', 
-    'Aroused'
-]
-
-flavor_profile = [
-    'Earthy', 'Sweet', 'Citrus', 'Pungent', 'Berry', 'Pine', 'Flowery', 
-    'Woody', 'Spicy', 'Herbal', 'Lemon', 'Skunk', 'Tropical', 'Blueberry', 
-    'Grape', 'Orange', 'Cheese', 'Pepper', 'Lime', 'Strawberry', 'Grapegruit', 
-    'Sage', 'Mint', 'Pineapple', 'Lavender', 'Chemical', 'Vanilla', 'Mango', 
-    'Honey', 'Tree', 'Fruit', 'Amonia', 'Menthol', 'Nutty', 'Coffee', 'Butter', 
-    'Tea', 'Apple', 'Rose', 'Violet', 'Apricot', 'Tar', 'Chestnut', 'Tobacco', 
-    'Peach', 'Pear', 'Plum'
-]"""
-
-
 dtm = pickle.load(open('./app/data/knn01_dtm.pkl', 'rb'))
 tf = pickle.load(open('./app/data/knn01_tf.pkl', 'rb'))
 
-
-@model_routes.route("/cannabis")
-def cannabis():
-    """database endpoint.
-
-    Returns:
-        dictionary (json object)
-    """
-    db_cannabis = Cannabis.query.all()
-    cannabis_response = parse_records(db_cannabis)
-    return jsonify(cannabis_response)
-
+nn = NearestNeighbors(n_neighbors=5, algorithm='ball_tree')
+nn.fit(dtm)
 
 @model_routes.route("/cannabis/model_output", methods=['POST'])
 def knn01_model_recommender():
@@ -65,8 +33,6 @@ def knn01_model_recommender():
     Returns:
         list_model_id: python list of n recommended strains.
     """
-    nn = NearestNeighbors(n_neighbors=5, algorithm='ball_tree')
-    nn.fit(dtm)
 
     type_list = request.form.getlist("type_list")
     effect_list = request.form.getlist("effect_list")

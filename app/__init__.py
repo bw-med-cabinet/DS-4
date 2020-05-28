@@ -8,10 +8,10 @@
 import os
 from dotenv import load_dotenv
 from flask import Flask
-# from flask_cors import CORS
+from flask_cors import CORS
 
 #> Import routes
-from app.models import Cannabis, db, migrate
+from app.models import db, migrate
 from app.routes.home_routes import home_routes
 from app.routes.model_routes import model_routes
 
@@ -20,7 +20,7 @@ load_dotenv()
 
 def create_app():
     app = Flask(__name__)
-    # CORS(app)
+    CORS(app)
 
     # Configure the database
     app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///data/database.sqlite3"
