@@ -4,7 +4,7 @@
 
 # Med Cabinet
 
->Med Cabinet is a simple machine learning model for new cannabis consumers trying to get off pharmaceuticals, who want to use cannabis as a means to battle medical conditions and ailments.
+>Med Cabinet is a res simple machine learning model for new cannabis consumers trying to get off pharmaceuticals, who want to use cannabis as a means to battle medical conditions and ailments.
 
 >Help patients find the right strains! Use user data along with strain data along a machine learning model to guide user recommendations.
 

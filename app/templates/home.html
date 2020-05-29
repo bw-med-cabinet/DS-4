@@ -1,9 +1,15 @@
-<!-- app/templates/model_form.html -->
+<!-- app/templates/home.html -->
 
-{% extends "layout.html" %}
+{% extends "index.html" %}
+
+{% block title %}This is an example page{% endblock %}
+
+{% block navbar %}
+<div class="navbar navbar-fixed-top">
+  <!-- ... -->
+</div>
+{% endblock %}
 
 {% block content %}
-
-    <h2>Hello World!</h2>
-
+    <h2>Welcome to Medicinal Cabinet!</h2>
 {% endblock %}

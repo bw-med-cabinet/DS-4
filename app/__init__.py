@@ -9,23 +9,27 @@ import os
 from dotenv import load_dotenv
 from flask import Flask
 from flask_cors import CORS
+from flask_bootstrap import Bootstrap
 
 #> Import routes
 from app.models import db, migrate
 from app.routes.home_routes import home_routes
 from app.routes.model_routes import model_routes
+from app.routes.dev_routes import dev_routes
 
 load_dotenv()
 
 # DATABASE_CANNABIS = os.getenv("DATABASE_CANNABIS")
 
 def create_app():
-    app = Flask(__name__)
-    cors =  CORS(app, resources={
+    app = Flask(__name__, static_url_path="", static_folder="static")
+    CORS(app, resources={
         r"/*": {
             "origins": "*"
         }
     })
+
+    Bootstrap(app)
 
     # Configure the database
     app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///data/database.sqlite3"
