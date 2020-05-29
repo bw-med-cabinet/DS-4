@@ -30,6 +30,9 @@ def create_app():
         }
     })
 
+    from app.plotlydash.dashboard import create_dashboard
+    app = create_dashboard(app)
+
     # Configure the database
     app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///data/database.sqlite3"
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False

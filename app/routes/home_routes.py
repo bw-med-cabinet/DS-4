@@ -51,3 +51,10 @@ def cross_route(): # <dev>
     return jsonify({'data': 'The text is being displayed!'})
 
 
+@home_routes.route('/')
+def dashboard():
+    """Database page."""
+    return render_template('dashboard.html',
+                           title='Plotly Dash & Flask Tutorial',
+                           template='home-template',
+                           body="This is a homepage served with Flask.")
