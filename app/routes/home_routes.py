@@ -26,8 +26,8 @@ def about(): # <prod>
     return render_template("about.html")
 
 
-@home_routes.route("/cannabis")
-def cannabis(): # <prod>
+@home_routes.route("/database")
+def database(): # <prod>
     """database endpoint. 
 
     Returns:
@@ -40,7 +40,7 @@ def cannabis(): # <prod>
 
 @home_routes.route("/dev/cross_route", methods=['GET', 'POST'])
 @cross_origin()
-def cross_api(): # <dev>
+def cross_route(): # <dev>
     """cross origin requests developement route.
     
     Used for testing incoming requests from different URIs. 

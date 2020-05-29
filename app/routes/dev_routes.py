@@ -1,7 +1,8 @@
 # app/routes/development.py
 
 #> import packages
-from flask import Blueprint, jsonify, request, render_template
+from flask import Blueprint, jsonify, request, render_template, redirect, url_for
+from flask_cors import cross_origin
 from app.models import Cannabis, db, parse_records
 
 import json
@@ -10,8 +11,13 @@ import json
 dev_routes = Blueprint("dev_routes", __name__)
 
 
-@dev_routes.route("/cannabis/dev/model_form")
-def user_form(): # <dev>
+@dev_routes.route("/dev/route_test", methods=['GET'])
+def dev_route_test(): # <prod>
+    return redirect("/home")
+
+
+@dev_routes.route("/cannabis/dev/user_form_test")
+def user_form_test(): # <dev>
     """recommender user form.
 
     Returns:
@@ -23,10 +29,10 @@ def user_form(): # <dev>
         "effect_list": [""],
         "flavor_list": [""]}
     """
-    return render_template("user_form.html")
+    return render_template("index.html")
 
 
-@dev_routes.route("/cannabis/dev/form_result", methods=['GET', 'POST'])
+@dev_routes.route("/cannabis/dev/user_form_model", methods=['GET', 'POST'])
 def model_form_recommender(): # <dev>
     """creates list with top n recommended strains.
 
@@ -84,7 +90,7 @@ def model_form_recommender(): # <dev>
         for val in list_strains
     ]
 
-    # MILESTONE 02 #> knn_01 model result
+    # MILESTONE 02 #> User input list goes through KNN model
     
     records = parse_records(Cannabis.query.filter(Cannabis.strain_index.in_(return_list)).all())
 

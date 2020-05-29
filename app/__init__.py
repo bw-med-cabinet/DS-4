@@ -9,7 +9,8 @@ import os
 from dotenv import load_dotenv
 from flask import Flask
 from flask_cors import CORS
-from flask_bootstrap import Bootstrap
+
+import dash
 
 #> Import routes
 from app.models import db, migrate
@@ -29,8 +30,6 @@ def create_app():
         }
     })
 
-    Bootstrap(app)
-
     # Configure the database
     app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///data/database.sqlite3"
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
@@ -40,6 +39,7 @@ def create_app():
     # Configure routes
     app.register_blueprint(home_routes)
     app.register_blueprint(model_routes)
+    app.register_blueprint(dev_routes)
 
     return app
 

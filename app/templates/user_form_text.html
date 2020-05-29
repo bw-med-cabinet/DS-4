@@ -1,0 +1,19 @@
+<!-- app/templates/model_form.html -->
+
+{% extends "layout.html" %}
+
+{% block content %}
+    <h2>User Input</h2>
+
+    <p>User Recommendation Form</p>
+
+    <form action="/cannabis/output_nlp01" method="POST">
+
+        <fieldset>
+            <label for="dict_list">Strain Description:</label><br>
+            <input type="text" id="dict_list" name="dict_list" value="text"><br>
+            <button style="margin:10px">Submit</button>
+        </fieldset>
+
+    </form>
+{% endblock %}
