@@ -122,7 +122,7 @@ def knn01_model_recommender():
     
     # MILESTONE 02 #> User input list goes through KNN model
 
-    # return render_template("result_view.html", data=records)
+    # return render_template("result_view.html")
     return jsonify(records)
 
 
