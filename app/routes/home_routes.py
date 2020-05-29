@@ -26,7 +26,7 @@ def about(): # <prod>
     return render_template("about.html")
 
 
-@home_routes.route("/database")
+@home_routes.route("/cannabis")
 def database(): # <prod>
     """database endpoint. 
 
